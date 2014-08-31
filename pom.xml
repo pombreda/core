@@ -53,7 +53,6 @@
         <module>reflect</module>
 		<module>utils</module>
 		<module>wsutils</module>
-		<module>tst</module>
 	</modules>
 
     <dependencyManagement>
