@@ -1,20 +1,19 @@
 package org.flossware.util.properties;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.flossware.util.FileMonitor;
 
 /**
  *
- * Monitor a properties file.  If the file changes, reload the properties.
+ * Monitor a properties file. If the file changes, reload the properties.
  *
  * @author sfloess
  *
  */
 public class FileMonitorPropertiesMgr extends AbstractPropertiesMgr {
+
     private final FileMonitor fileMonitor;
 
     private Properties properties;
@@ -24,16 +23,7 @@ public class FileMonitorPropertiesMgr extends AbstractPropertiesMgr {
     }
 
     protected static Properties loadProperties(final Logger logger, final FileMonitor fileMonitor) {
-        try {
-            final FilePropertiesMgr fpm = new FilePropertiesMgr(fileMonitor.getFile());
-            return fpm.getProperties();
-        }
-
-        catch(final IOException ioException) {
-            logger.log(Level.SEVERE, "Trouble loading propeties for file [" + fileMonitor.getFile() + "] - returning empty properties!", ioException);
-        }
-
-        return new Properties();
+        return new FilePropertiesMgr(fileMonitor.getFile()).getProperties();
     }
 
     @Override
@@ -47,7 +37,7 @@ public class FileMonitorPropertiesMgr extends AbstractPropertiesMgr {
 
     public FileMonitorPropertiesMgr(final File file) {
         this.fileMonitor = new FileMonitor(file);
-        this.properties  = loadProperties(getLogger(), fileMonitor);
+        this.properties = loadProperties(getLogger(), fileMonitor);
     }
 
     public FileMonitorPropertiesMgr(final String fileName) {

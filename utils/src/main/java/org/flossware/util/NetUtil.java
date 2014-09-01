@@ -73,10 +73,12 @@ public class NetUtil {
      * @param rawUrl the raw URL to convert.
      *
      * @return a URL representation of only protocol and host.
-     *
-     * @throws MalformedURLException if there is a problem converting to a URL.
      */
-    public static URL computeHostUrl(final String rawUrl) throws MalformedURLException {
-        return new URL(computeHostUrlAsString(rawUrl));
+    public static URL computeHostUrl(final String rawUrl) {
+        try {
+            return new URL(computeHostUrlAsString(rawUrl));
+        } catch (final MalformedURLException malformedUrlException) {
+            throw new UrlException(malformedUrlException);
+        }
     }
 }
