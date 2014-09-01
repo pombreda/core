@@ -1,7 +1,5 @@
 package org.flossware.util.properties;
 
-import java.io.IOException;
-
 /**
  *
  * Loads properties as a resource.
@@ -9,8 +7,9 @@ import java.io.IOException;
  * @author sfloess
  *
  */
-public final class ResourcePropertiesMgr extends InputStreamPropertiesMgr { 
-    public ResourcePropertiesMgr(final String resourceName) throws IOException {
-        super(ResourcePropertiesMgr.class.getResourceAsStream(resourceName));     
+public final class ResourcePropertiesMgr extends InputStreamPropertiesMgr {
+
+    public ResourcePropertiesMgr(final String resourceName) {
+        super(ResourcePropertiesMgr.class.getResourceAsStream(resourceName));
     }
 }
