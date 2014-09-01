@@ -1,7 +1,7 @@
 package org.flossware.reflect.caller.decorator;
 
-import org.flossware.reflect.caller.AbstractCaller;
 import org.flossware.reflect.call.Call;
+import org.flossware.reflect.caller.AbstractCaller;
 
 /**
  *
@@ -20,7 +20,7 @@ public abstract class AbstractCallerDecorator<V> extends AbstractCaller<V> imple
      * {@inheritDoc}
      */
     @Override
-    public Object performCall(final Call<V> call) throws Throwable {
+    public Object performCall(final Call<V> call) {
         return getDecoratee().executeCall(getCallDecorator().decorate(call));
     }
 }

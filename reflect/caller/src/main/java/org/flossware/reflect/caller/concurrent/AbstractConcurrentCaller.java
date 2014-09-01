@@ -1,12 +1,9 @@
 package org.flossware.reflect.caller.concurrent;
 
 import java.util.logging.Level;
-
 import org.flossware.reflect.call.Call;
 import org.flossware.reflect.call.CallStrategy;
-import org.flossware.reflect.caller.concurrent.ConcurrentCaller;
 import org.flossware.reflect.caller.AbstractCaller;
-
 
 /**
  *
@@ -16,14 +13,13 @@ import org.flossware.reflect.caller.AbstractCaller;
  *
  */
 public abstract class AbstractConcurrentCaller<V> extends AbstractCaller<V> implements ConcurrentCaller<V> {
+
     /**
      * Perform a "lock" - whatever lock means.
      *
      * @param call is the call being made when requesting the lock.
-     *
-     * @throws Exception if there is a problem locking.
      */
-    protected abstract void lock(Call<V> call) throws Exception;
+    protected abstract void lock(Call<V> call);
 
     /**
      * Perform an "unlock" - whatever unlock means.
@@ -51,16 +47,14 @@ public abstract class AbstractConcurrentCaller<V> extends AbstractCaller<V> impl
      * {@inheritDoc}
      */
     @Override
-    public Object executeCall(final Call<V> call) throws Throwable {
+    public Object executeCall(final Call<V> call) {
         getLogger().log(Level.FINEST, "Calling [{0}]", call);
 
         lock(call);
 
         try {
             return super.executeCall(call);
-        }
-
-        finally {
+        } finally {
             unlock(call);
         }
     }

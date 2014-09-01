@@ -24,8 +24,14 @@ public abstract class AbstractSempahoreConcurrentCaller<V> extends AbstractConcu
      * {@inheritDoc}
      */
     @Override
-    protected void lock(Call<V> call) throws Exception {
-        getSemaphore(call).acquire();
+    protected void lock(Call<V> call) {
+        try {
+            getSemaphore(call).acquire();
+        } catch (final RuntimeException runtimeException) {
+            throw runtimeException;
+        } catch (final Throwable throwable) {
+            throw new LockException(throwable);
+        }
     }
 
     /**

@@ -2,21 +2,20 @@ package org.flossware.reflect.caller.layering.processor;
 
 import org.flossware.reflect.call.Call;
 import org.flossware.reflect.call.CallStrategy;
+import org.flossware.reflect.call.layering.processor.PostCallProcessor;
+import org.flossware.reflect.call.layering.processor.PreCallProcessor;
 import org.flossware.reflect.caller.layering.AbstractLayeringCaller;
-import org.flossware.reflect.call.layering.processor.PostCallProcessor;
-import org.flossware.reflect.call.layering.processor.PostCallProcessor;
-import org.flossware.reflect.call.layering.processor.PreCallProcessor;
-import org.flossware.reflect.call.layering.processor.PreCallProcessor;
-
 
 /**
  *
- * Abstracts out pre and post call processing to the helper implementations PreCallProcessor and PostCallProcessor.
+ * Abstracts out pre and post call processing to the helper implementations
+ * PreCallProcessor and PostCallProcessor.
  *
  * @author sfloess
  *
  */
 public abstract class AbstractLayeringProcessorCaller<V> extends AbstractLayeringCaller<V> {
+
     /**
      * Set up the semaphore to use.
      *
@@ -32,6 +31,7 @@ public abstract class AbstractLayeringProcessorCaller<V> extends AbstractLayerin
     protected AbstractLayeringProcessorCaller() {
 
     }
+
     /**
      * Return the object who will be called before any method is called.
      *
@@ -50,7 +50,7 @@ public abstract class AbstractLayeringProcessorCaller<V> extends AbstractLayerin
      * {@inheritDoc}
      */
     @Override
-    protected Call<V> prepareToCall(final Call<V> call) throws Exception {
+    protected Call<V> prepareToCall(final Call<V> call) {
         return getPreCallProcessor().prepareToCall(call);
     }
 
@@ -58,7 +58,7 @@ public abstract class AbstractLayeringProcessorCaller<V> extends AbstractLayerin
      * {@inheritDoc}
      */
     @Override
-    protected void callSucceeded(final Call<V> call) throws Exception {
+    protected void callSucceeded(final Call<V> call) {
         getPostCallProcessor().callSucceeded(call);
     }
 
@@ -66,7 +66,7 @@ public abstract class AbstractLayeringProcessorCaller<V> extends AbstractLayerin
      * {@inheritDoc}
      */
     @Override
-    protected void callFailed(final Call<V> call, final Throwable failure) throws Exception {
+    protected void callFailed(final Call<V> call, final Throwable failure) {
         getPostCallProcessor().callFailed(call, failure);
     }
 }

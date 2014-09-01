@@ -12,5 +12,5 @@ import org.flossware.reflect.caller.Caller;
  */
 public interface CallerFactory<V> {
 
-    <P> Caller<V> create(Service service, Class<P> portType) throws Exception;
+    <P> Caller<V> create(Service service, Class<P> portType);
 }

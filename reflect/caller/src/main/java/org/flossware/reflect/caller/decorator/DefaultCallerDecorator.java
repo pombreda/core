@@ -1,10 +1,9 @@
 package org.flossware.reflect.caller.decorator;
 
 import org.flossware.common.IntegrityUtil;
-import org.flossware.reflect.caller.Caller;
-import org.flossware.reflect.call.decorator.DecorateCall;
 import org.flossware.reflect.call.decorator.DecorateCall;
 import org.flossware.reflect.call.decorator.NullDecorateCall;
+import org.flossware.reflect.caller.Caller;
 
 /**
  *
@@ -12,6 +11,7 @@ import org.flossware.reflect.call.decorator.NullDecorateCall;
  *
  */
 public abstract class DefaultCallerDecorator<V> extends AbstractCallerDecorator<V> {
+
     /**
      * Will decorate the actual calls.
      */
@@ -27,7 +27,7 @@ public abstract class DefaultCallerDecorator<V> extends AbstractCallerDecorator<
      */
     public DefaultCallerDecorator(final DecorateCall<V> callDecorator, final Caller<V> caller) {
         this.callDecorator = IntegrityUtil.ensure(callDecorator, "Call decorator cannot be null!");
-        this.caller        = IntegrityUtil.ensure(caller, "Caller cannot be null!");
+        this.caller = IntegrityUtil.ensure(caller, "Caller cannot be null!");
     }
 
     /**

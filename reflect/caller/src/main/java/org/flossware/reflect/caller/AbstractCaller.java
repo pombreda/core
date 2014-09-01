@@ -1,14 +1,9 @@
-
 package org.flossware.reflect.caller;
 
 import java.util.logging.Logger;
 import org.flossware.common.IntegrityUtil;
 import org.flossware.reflect.call.Call;
-import org.flossware.reflect.call.Call;
 import org.flossware.reflect.call.CallStrategy;
-import org.flossware.reflect.call.CallStrategy;
-import org.flossware.reflect.caller.Caller;
-
 
 /**
  *
@@ -18,6 +13,7 @@ import org.flossware.reflect.caller.Caller;
  *
  */
 public abstract class AbstractCaller<V> implements Caller<V>, CallStrategy<V> {
+
     /**
      * Our logger.
      */
@@ -36,7 +32,7 @@ public abstract class AbstractCaller<V> implements Caller<V>, CallStrategy<V> {
      * @throws IllegalArgumentException if <code>callStrategy</code> is null.
      */
     protected AbstractCaller(final CallStrategy<V> callStrategy) {
-        this.logger       = Logger.getLogger(getClass().getName());
+        this.logger = Logger.getLogger(getClass().getName());
         this.callStrategy = IntegrityUtil.ensure(callStrategy, "Cannot have a null call strategy");
     }
 
@@ -44,7 +40,7 @@ public abstract class AbstractCaller<V> implements Caller<V>, CallStrategy<V> {
      * Default constructor.
      */
     protected AbstractCaller() {
-        this.logger       = Logger.getLogger(getClass().getName());
+        this.logger = Logger.getLogger(getClass().getName());
         this.callStrategy = this;
     }
 
@@ -57,7 +53,7 @@ public abstract class AbstractCaller<V> implements Caller<V>, CallStrategy<V> {
         return logger;
     }
 
-     /**
+    /**
      * Return the call strategy used by the caller.
      *
      * @return the call strategy used by the caller.
@@ -70,7 +66,7 @@ public abstract class AbstractCaller<V> implements Caller<V>, CallStrategy<V> {
      * {@inheritDoc}
      */
     @Override
-    public Object performCall(final Call<V> call) throws Throwable {
+    public Object performCall(final Call<V> call) {
         return call.execute();
     }
 
@@ -78,7 +74,7 @@ public abstract class AbstractCaller<V> implements Caller<V>, CallStrategy<V> {
      * {@inheritDoc}
      */
     @Override
-    public Object executeCall(final Call<V> call) throws Throwable {
+    public Object executeCall(final Call<V> call) {
         return getCallStrategy().performCall(call);
     }
 }

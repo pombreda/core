@@ -10,16 +10,15 @@ import org.flossware.reflect.call.Call;
  *
  */
 public interface PreCallProcessor<V> {
+
     /**
-     * Denotes a call is about to be made.  Allows implementations to change
-     * the call if need be.
+     * Denotes a call is about to be made. Allows implementations to change the
+     * call if need be.
      *
      * @param call the call that will be made.
      *
-     * @return a new representation of <code>call</code> or
-     *         <code>call</code> itself (if no changes).
-     *
-     * @throws Exception raised if the call cannot be made.
+     * @return a new representation of <code>call</code> or <code>call</code>
+     *         itself (if no changes).
      */
-    Call<V> prepareToCall(Call<V> call) throws Exception;
+    Call<V> prepareToCall(Call<V> call);
 }

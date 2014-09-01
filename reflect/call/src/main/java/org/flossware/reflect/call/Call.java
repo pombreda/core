@@ -173,8 +173,14 @@ public class Call<V> implements Stringifiable {
      *
      * @throws Throwable if any problem arises making the call.
      */
-    public Object execute() throws Throwable {
-        return getMethod().invoke(getObject(), getArgs());
+    public Object execute() {
+        try {
+            return getMethod().invoke(getObject(), getArgs());
+        } catch (final RuntimeException runtimeException) {
+            throw runtimeException;
+        } catch (final Throwable throwable) {
+            throw new CallException(throwable);
+        }
     }
 
     /**
