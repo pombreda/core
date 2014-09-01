@@ -67,7 +67,7 @@ public class PostCallProcessorComposite<V> extends AbstractProcessor implements 
      * {@inheritDoc}
      */
     @Override
-    public void callFailed(final Call<V> call, final Throwable failure) throws Exception {
+    public void callFailed(final Call<V> call, final Throwable failure) {
         for (final PostCallProcessor postCallProcessor : getPostCallProcessList()) {
             getLogger().log(Level.FINEST, "Notifying postCallProcessor [{0}] of failure [{1}]", new Object[] {postCallProcessor, failure.getMessage()});
 
@@ -79,7 +79,7 @@ public class PostCallProcessorComposite<V> extends AbstractProcessor implements 
      * {@inheritDoc}
      */
     @Override
-    public void callSucceeded(final Call<V> call) throws Exception {
+    public void callSucceeded(final Call<V> call) {
         for (final PostCallProcessor postCallProcessor : getPostCallProcessList()) {
             getLogger().log(Level.FINEST, "Notifying postCallProcessor [{0}] of success", postCallProcessor);
 

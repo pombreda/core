@@ -27,7 +27,7 @@ public class PreCallPauseProcessor<V> extends AbstractPauseProcessor implements 
      * {@inheritDoc}
      */
     @Override
-    public Call<V> prepareToCall(final Call<V> call) throws Exception {
+    public Call<V> prepareToCall(final Call<V> call) {
         doPause();
 
         return call;

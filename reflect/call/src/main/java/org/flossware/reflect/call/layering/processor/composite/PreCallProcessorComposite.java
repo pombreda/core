@@ -67,7 +67,7 @@ public class PreCallProcessorComposite<V> extends AbstractProcessor implements P
      * {@inheritDoc}
      */
     @Override
-    public Call<V> prepareToCall(final Call<V> call) throws Exception {
+    public Call<V> prepareToCall(final Call<V> call) {
         Call<V> retVal = call;
 
         for (final PreCallProcessor preCallProcessor : getPreCallProcessList()) {

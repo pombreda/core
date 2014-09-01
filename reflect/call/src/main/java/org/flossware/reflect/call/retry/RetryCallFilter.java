@@ -10,15 +10,14 @@ import org.flossware.reflect.call.Call;
  *
  */
 public interface RetryCallFilter<V> {
+
     /**
      * Return true if we should retry the call, or false if not.
      *
-     * @param call is the call to execute.
+     * @param call    is the call to execute.
      * @param failure is the failure that arose when calling to an object.
      *
      * @return true if we should retry or false if not.
-     *
-     * @throws Exception if any problems arise determining if a retry is allowed.
      */
-    boolean isToRetryCall(Call<V> call, Exception failure) throws Exception;
+    boolean isToRetryCall(Call<V> call, Throwable failure);
 }

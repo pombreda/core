@@ -10,22 +10,19 @@ import org.flossware.reflect.call.Call;
  *
  */
 public interface PostCallProcessor<V> {
+
     /**
      * Denotes a call passed.
      *
      * @param call the call made.
-     *
-     * @throws Exception if any problem arises in dealing with the successful call.
      */
-    void callSucceeded(Call<V> call) throws Exception;
+    void callSucceeded(Call<V> call);
 
     /**
      * Denotes a call failed.
      *
-     * @param call the call made.
+     * @param call    the call made.
      * @param failure the failure raised when calling.
-     *
-     * @throws Exception if any problem arise handling the failed call.
      */
-    void callFailed(Call<V> call, Throwable failure) throws Exception;
+    void callFailed(Call<V> call, Throwable failure);
 }

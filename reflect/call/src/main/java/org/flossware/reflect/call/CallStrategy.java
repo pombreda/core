@@ -2,7 +2,7 @@ package org.flossware.reflect.call;
 
 /**
  *
- * Defines a strategy when performing a call.  Decoupling the actual call from
+ * Defines a strategy when performing a call. Decoupling the actual call from
  * the caller means we can either call directly or implement a decorator style
  * call.
  *
@@ -10,15 +10,13 @@ package org.flossware.reflect.call;
  *
  */
 public interface CallStrategy<V> {
+
     /**
      * Will execute the call.
      *
      * @param call the call to make.
      *
      * @return the result from the call.
-     *
-     * @throws Exception can be an exception raised from the call or allows
-     *         implementation to force a failure.
      */
-    Object performCall(Call<V> call) throws Throwable;
+    Object performCall(Call<V> call);
 }
