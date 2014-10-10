@@ -79,4 +79,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <distributionManagement>
+        <repository>
+            <id>bintray-flossware-maven-java</id>
+            <name>flossware-maven-java</name>
+            <url>https://api.bintray.com/maven/flossware/maven/java</url>
+        </repository>
+    </distributionManagement>
 </project>
