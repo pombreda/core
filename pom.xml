@@ -12,6 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <java_version>1.7</java_version>
         <org.apache.maven.plugins_maven-compiler-plugin_version>2.4</org.apache.maven.plugins_maven-compiler-plugin_version>
 
         <log4j_log4j_version>1.2.14</log4j_log4j_version>
@@ -39,8 +40,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
                 <version>${org.apache.maven.plugins_maven-compiler-plugin_version}</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+                    <source>${java_version}</source>
+                    <target>${java_version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -79,6 +80,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <distributionManagement>
         <repository>
             <id>bintray-flossware-maven-java</id>
